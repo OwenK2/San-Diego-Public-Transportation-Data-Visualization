@@ -1,0 +1,22 @@
+{
+  "name": "sdmts_tracker",
+  "version": "3.0.0",
+  "description": "A website application for visualizing data from the San Diego public transportation service MTS.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "gtfs",
+    "mts",
+    "trolley"
+  ],
+  "repository": "https://github.com/OwenK2/San-Diego-Public-Transportation-Data-Visualization",
+  "author": "Owen Kuhn",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
