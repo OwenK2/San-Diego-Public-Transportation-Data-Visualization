@@ -1,0 +1,197 @@
+:root {
+	--accent: #2ecc71;
+	--accentshade: rgba(46,204,113, .1);
+	--accent2: #3498db;
+	--error: #ED3234;
+	--accent-dark: #27ae60;
+	--background: #ffffff;
+	--text: #222;
+	--maptext: #afbac2;
+	--mapbg: #fdfdfd;
+	--border: rgba(0,0,0,.1);
+	--highlight: rgba(0,0,0,.03);
+	--font: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+body {
+	padding: 0;
+	margin: 0;
+	font-family: var(--font);
+	color: var(--text);
+	background: var(--background);
+	display: flex;
+	flex-wrap: wrap;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#tmp {
+	height: 100vh;
+	width: 100vw;
+	background: var(--background);
+	overflow-y: auto;
+	display: none;
+}
+
+#loading {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: var(--background);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 4;
+	transition: opacity .5s;
+}
+#loading svg {
+	flex: 1;
+	max-height: 80vh;
+	max-width: 80vw;
+	fill: transparent;
+	stroke-width: 1px;
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  -webkit-animation: draw 2s linear infinite;
+  -ms-animation: draw 2s linear infinite;
+  -moz-animation: draw 2s linear infinite;
+  -o-animation: draw 2s linear infinite;
+	animation: draw 2s linear infinite;
+}
+#loading.off {
+	opacity: 0;
+	pointer-events: none;
+}
+@-webkit-keyframes draw {to {stroke-dashoffset: 0;}}
+@keyframes draw {to {stroke-dashoffset: 0;}}
+
+#controls {
+	height: 100vh;
+	flex-basis: 300px;
+	background: var(--background);
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+#logo {
+	height: 5em;
+	margin: 10px 5%;
+}
+#map {
+	flex: 1;
+	height: 100vh;
+	z-index: 0;
+}
+
+
+
+
+
+
+/* LEAFLET */
+.leaflet-bar {
+	border: 0 !important;
+}
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  color: var(--text) !important;
+  border: 3px solid var(--border) !important;
+}
+.leaflet-control-zoom-in {border-bottom: 0 !important;border-radius: 4px 4px 0 0 !important;}
+.leaflet-control-zoom-out {border-top: 1px solid var(--border) !important;border-radius: 0 0 4px 4px !important;}
+.leaflet-title {
+	font-size: 1.3em !important;
+	color: var(--maptext) !important;
+	width: unset !important;
+	text-shadow: 0 0 2px var(--mapbg);
+}
+.tooltipTitle {
+	margin: 0;
+	font-size: .9em;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+/* MEDIA QUERIES */
+
+
+/* Notification */
+.notification {
+	min-width: 250px;
+	max-width: 50%;
+	padding: 10px 20px;
+	position: absolute;
+	bottom: 100%;
+	right: 1%;
+	box-sizing: border-box;
+	background: var(--background);
+	color: var(--text);
+	font-size: .9em;
+	box-shadow: 0 0 25px 0 rgba(0,0,0,.2);
+	border-left: 5px solid var(--accent);
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	z-index: 4;
+	overflow: hidden;
+	cursor: pointer;
+	transition: bottom .5s, right .5s;
+}
+.notification > div {
+	max-height: 200px;
+	overflow: auto;
+}
+.notification h2 {
+	margin: 0;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+.notification:before {
+	content: "";
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: var(--highlight);
+	z-index: -1;
+}
+.hidden {
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	top: -1000%;
+	left: -1000%;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+/* Loader */
+.loader {
+	height: 64px;
+	width: 64px;
+	position: absolute;
+	top: calc(50% - 32px);
+	left: calc(50% - 32px);
+	transform-origin: center;
+	border: 2px solid var(--highlight);
+	border-top: 2px solid var(--accent);
+	border-radius: 50%;
+	-webkit-animation: loader 1s linear infinite;
+	-moz-animation: loader 1s linear infinite;
+	-ms-animation: loader 1s linear infinite;
+	-o-animation: loader 1s linear infinite;
+	animation: loader 1s linear infinite;
+	opacity: 0;
+	user-select: none;
+	pointer-events: none;
+}
+.loader.small {
+	height: 40px;
+	width: 40px;
+	top: calc(50% - 20px);
+	left: calc(50% - 20px);
+}
+.loader.on {
+	opacity: 1;
+}
+@-webkit-keyframes loader {to {-webkit-transform: rotate(360deg);-ms-transform: rotate(360deg);-moz-transform: rotate(360deg);-o-transform: rotate(360deg);transform: rotate(360deg);}}
+@keyframes loader {to {-webkit-transform: rotate(360deg);-ms-transform: rotate(360deg);-moz-transform: rotate(360deg);-o-transform: rotate(360deg);transform: rotate(360deg);}}

@@ -1,0 +1,3 @@
+service_id,start_date,end_date,monday,tuesday,wednesday,thursday,friday,saturday,sunday
+11120,20190901,20200125,1,1,1,1,1,1,1
+11121,20200126,20200606,1,1,1,1,1,1,1
