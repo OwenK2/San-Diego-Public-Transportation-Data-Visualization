@@ -4,3 +4,8 @@ rough_draft
 *.DS_Store
 
 gtfs/*.txt
+gtfs/*.json
+timestamp.txt
+server.crt
+server.csr
+server.key
