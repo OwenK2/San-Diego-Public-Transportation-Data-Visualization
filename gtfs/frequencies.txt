@@ -1,3 +1,0 @@
-trip_id,start_time,end_time,headway_secs,exact_times
-130_merged_113132682,00:00:00,23:59:00,900,0
-130_merged_113132507,00:00:00,23:59:00,900,0
