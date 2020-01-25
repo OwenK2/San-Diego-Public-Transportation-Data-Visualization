@@ -5,7 +5,6 @@ rough_draft
 
 gtfs/*.txt
 gtfs/*.json
-timestamp.txt
 server.crt
 server.csr
 server.key

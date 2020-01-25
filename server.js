@@ -84,12 +84,14 @@ function routePost(path,stream) {
 
 //Data Getters
 function refreshGTFS(alwaysLoad) {
-	fs.readFile('./timestamp.txt', function(error, data) {
+	fs.readFile('./gtfs/timestamp.txt', function(error, data) {
+		let timestamp;
 	  if (error) {
-	  	console.log("Could not read timestamp.txt");
-	  	return false;
-	  };
-	  let timestamp = parseInt(data.toString());
+	  	timestamp = 0;
+	  }
+	  else {
+			timestamp = parseInt(data.toString());
+	  }
 	  let time = new Date().getTime();
 	  const oneDay = 86400000;
 	  if(isNaN(timestamp) || time - timestamp > oneDay) {
@@ -109,9 +111,9 @@ function aquireGTFS() {
 	}).pipe(unzipper.Extract({ path: './gtfs' })).promise()
 	.then(function() {
 		console.log("GTFS extracted");
-		fs.writeFile("./timestamp.txt", new Date().getTime(), 'utf8', function(error) {
+		fs.writeFile("./gtfs/timestamp.txt", new Date().getTime(), 'utf8', function(error) {
 			if(error) {
-				console.log("Failed to log to timestamp.txt");
+				console.log("Failed to log to gtfs/timestamp.txt");
 			}
 		});
 		paths = {};
